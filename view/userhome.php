@@ -5,6 +5,10 @@
  * and open the template in the editor.
  */
 session_start();
+include_once './header.html';
+?>
+
+<?php
 if (isset($_SESSION['username'])) {
     echo 'Welcome, ' . $_SESSION['username'];
     echo '<br>';

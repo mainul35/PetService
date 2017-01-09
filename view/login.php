@@ -57,7 +57,6 @@ if (!isset($_SESSION['username'])) {
         <?php
     }
 } else {
-    echo 'ghjk';
     header("location: userhome.php");
 }
 ?>

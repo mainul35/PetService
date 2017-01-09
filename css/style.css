@@ -74,3 +74,7 @@ select{
     width: 101%;
     height: 100%;
 }
+
+nav{
+    border-radius: 0px;
+}

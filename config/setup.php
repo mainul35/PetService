@@ -57,10 +57,21 @@ include_once '../view/header.html';
             echo '\'customer\' table created successfully.<br>';
         }
 
+        $sql = "CREATE TABLE petType ( "
+                . "`perTypeId` INT(10) NOT NULL AUTO_INCREMENT ,"
+                . " `perType` VARCHAR(100) NOT NULL ,"
+                . " PRIMARY KEY (`perTypeId`)) ENGINE = InnoDB;";
+        $manager->query($sql);
+        if (mysqli_error($manager->getConnection())) {
+            echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
+        } else {
+            echo '\'petType\' table created successfully.<br>';
+        }
+        
         $sql = "CREATE TABLE pet(
                 petId INT(10) NOT NULL AUTO_INCREMENT,
 		petName VARCHAR(100) NOT NULL,
-		petType VARCHAR(100) NOT NULL,
+		petTypeId INT(10) NOT NULL,
 		petAge INT NOT NULL,
 		userId INT(10) NOT NULL,
 		PRIMARY KEY (petId),
@@ -72,6 +83,12 @@ include_once '../view/header.html';
             echo '\'pet\' table created successfully.<br>';
         }
 
+        $sql = "ALTER TABLE `pet` ADD `petImage` VARCHAR(255) NOT NULL AFTER `petName`;";
+        $manager->query($sql);
+        if (mysqli_error($manager->getConnection())) {
+            echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
+        }
+        
         $sql = "CREATE TABLE service(
                 serviceId INT(10) NOT NULL AUTO_INCREMENT,
 		serviceName VARCHAR(100) NOT NULL,
