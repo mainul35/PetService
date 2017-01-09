@@ -69,3 +69,8 @@ footer{
     text-decoration: none;
     cursor: pointer;
 }
+
+select{
+    width: 101%;
+    height: 100%;
+}

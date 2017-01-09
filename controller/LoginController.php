@@ -10,21 +10,20 @@ class LoginController{
     public function __construct() {
     }
 
-    public function checkLogin($email, $password) {
+    public function checkLogin($username, $password) {
         include_once '../config/config.php';
         $manager = Config::getManager();
         $manager->selectDB("petservice");
-        $email = mysqli_real_escape_string($manager->getConnection(), $email);
+        $username = mysqli_real_escape_string($manager->getConnection(), $username);
         $password = mysqli_real_escape_string($manager->getConnection(), $password);
         
-        if($this->getPassword($manager, $email)==md5($password)){
-            $_SESSION['signedEmail']=$email;
+        if($this->getPassword($manager, $username)==md5($password)){
             return true;
         }
     }
     
-    private function getPassword($manager, $email) {
-        $sql="select `password` from user where `email`='".$email."';";
+    private function getPassword($manager, $username) {
+        $sql="select `password` from customer where `username`='".$username."';";
         $result = $manager->query($sql);
         return $manager->fetchArray($result)[0];
     }

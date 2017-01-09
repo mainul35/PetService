@@ -40,6 +40,7 @@ include_once '../view/header.html';
 
         $sql = "CREATE TABLE customer(
                 userId INT(10) NOT NULL AUTO_INCREMENT,
+                username VARCHAR(50) NOT NULL,
 		email VARCHAR(100) NOT NULL,
 		password VARCHAR(50) NOT NULL,
 		name VARCHAR(100) NOT NULL,
@@ -47,8 +48,8 @@ include_once '../view/header.html';
 		address VARCHAR(250) NOT NULL,
 		contactNo VARCHAR(100) NOT NULL,
 		sex ENUM('male','female','other') NOT NULL,
-		PRIMARY KEY  (userId),
-		UNIQUE  (email)) ENGINE = InnoDB;";
+		PRIMARY KEY  (userId)
+		) ENGINE = InnoDB;";
         $manager->query($sql);
         if (mysqli_error($manager->getConnection())) {
             echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
@@ -101,12 +102,12 @@ include_once '../view/header.html';
             echo '\'booking\' table created successfully.<br>';
         }
 
-        $sql = "insert into customer values('1','admin@luceypet.com','Lucey@1234','Lucey','admin','Lucy\'s Pet Service Center','','female')";
+        $sql = "insert into customer values('1','adminlucey','admin@luceypet.com','".md5('Lucey@1234')."','Lucey','admin','Lucy\'s Pet Service Center','','female')";
         $manager->query($sql);
         if (mysqli_error($manager->getConnection())) {
             echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
         } else {
-            echo 'Welcome, Lucey!<br>Your email address is: admin@luceypet.com <br>and password is Lucey@1234<br> Please log in and customize your profile.';
+            echo 'Welcome, Lucey!<br>Your username address is: adminlucey <br>and password is Lucey@1234<br> Please log in and customize your profile.';
         }
         ?>
     </div>
