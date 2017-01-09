@@ -8,6 +8,35 @@
 <?php
 include_once '../header.html';
 include_once './RightNav.php';
+session_start();
+if (isset($_SESSION['username'])) {
+    if ($_SESSION['username'] == 'adminlucey') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['add'])) {
+                print_r($_POST['petTypeName']);
+                include_once '../../config/config.php';
+                $manager = Config::getManager();
+                $manager->selectDB('petservice');
+                $sql = "SELECT `petTypeName` from pettype WHERE `petTypeName` = '" . $_POST['petTypeName'] . "';";
+                if ($manager->num_rows($manager->query($sql)) > 0) {
+                    ?><script>alert("This pet type alreadt exists.")</script><?php
+                } else {
+                    $sql = "INSERT INTO `pettype`(`petTypeName`) VALUES ('" . $_POST['petTypeName'] . "');";
+                    $result = $manager->query($sql);
+                    if (mysqli_error($manager->getConnection())) {
+                        echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
+                    } else {
+                        header("location: AddPetType.php");
+                        ?><script>
+                                                    alert('Pet type added successfully.');
+                        </script>
+                        <?php
+                    }
+                }
+            }
+        }
+    }
+}
 ?>
 <link rel="stylesheet" href="../../css/w3.css"/>
 <link rel="stylesheet" href="../../css/style.css"/>
@@ -27,10 +56,10 @@ include_once './RightNav.php';
         <table>
             <tr>
                 <td>
-                    <label for="petName">Pet Name</label>
+                    <label for="petTypeName">Pet Name</label>
                 </td>
                 <td>
-                    <input class="w3-input" type="petName" name="petName"/>
+                    <input class="w3-input" type="text" name="petTypeName"/>
                 </td>
             </tr>
             <tr>

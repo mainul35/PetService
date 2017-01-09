@@ -47,7 +47,6 @@
         var menu = "<div class='menuItem' id='" + i + "'><a style='display:block; text-style: none;' href='" + navLink[i] + "'>" + nav[i] + "</a></div>";
         document.write(menu);
     }
-
 </script>
 <div class="right-nav">
 
