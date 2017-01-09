@@ -40,8 +40,8 @@
     }
 </style>
 <script>
-    var nav = ["Add pet type", "View bookings"];
-    var navLink = ["AddPetType.php", "#"];
+    var nav = ["Add pet type", "View bookings", "Log out"];
+    var navLink = ["AddPetType.php", "#", "../logout.php"];
     var i = 0;
     for (i = 0; i < nav.length; i++) {
         var menu = "<div class='menuItem' id='" + i + "'><a style='display:block; text-style: none;' href='" + navLink[i] + "'>" + nav[i] + "</a></div>";
