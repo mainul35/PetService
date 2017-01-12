@@ -58,9 +58,9 @@ include_once '../view/header.html';
         }
 
         $sql = "CREATE TABLE petType ( "
-                . "`perTypeId` INT(10) NOT NULL AUTO_INCREMENT ,"
-                . " `perType` VARCHAR(100) NOT NULL ,"
-                . " PRIMARY KEY (`perTypeId`)) ENGINE = InnoDB;";
+                . "`petTypeId` INT(10) NOT NULL AUTO_INCREMENT ,"
+                . " `petType` VARCHAR(100) NOT NULL ,"
+                . " PRIMARY KEY (`petTypeId`)) ENGINE = InnoDB;";
         $manager->query($sql);
         if (mysqli_error($manager->getConnection())) {
             echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
@@ -92,9 +92,7 @@ include_once '../view/header.html';
         $sql = "CREATE TABLE service(
                 serviceId INT(10) NOT NULL AUTO_INCREMENT,
 		serviceName VARCHAR(100) NOT NULL,
-		serviceType VARCHAR(100) NOT NULL,
-		unit INT NOT NULL,
-		cost FLOAT(10,2) NOT NULL,
+		costPerUnit FLOAT(10,2) NOT NULL,
 		PRIMARY KEY (serviceId))";
         $manager->query($sql);
         if (mysqli_error($manager->getConnection())) {
@@ -108,8 +106,7 @@ include_once '../view/header.html';
 		dateTime DATETIME NOT NULL,
 		serviceId INT(10) NOT NULL,
 		petId INT(10) NOT NULL,
-		unit INT(10) NOT NULL,
-		costPerUnit FLOAT(10,2) NOT NULL,
+		totalUnits INT(10) NOT NULL,
 		PRIMARY KEY (bookingId)
 		)";
         $manager->query($sql);

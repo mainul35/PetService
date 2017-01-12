@@ -1,23 +1,22 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 session_start();
-include_once './header.html';
 ?>
 
 <?php
+
 if (isset($_SESSION['username'])) {
-    echo 'Welcome, ' . $_SESSION['username'];
-    echo '<br>';
-    echo 'Click ';
-    ?>
-    <a href="logout.php">here</a>
-    <?php
-    echo ' to logout.';
+    if ($_SESSION['username'] == 'adminlucey') {
+        header("location: ./admin/AddPetType.php");
+    } else {
+        header("location: ./user/petRegistration.php");
+    }
 }else{
-    header("location: login.php");
+    header("location: ./login.php");
 }
 ?>

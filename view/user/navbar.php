@@ -17,10 +17,10 @@
       <a class="navbar-brand" href="#">Lucy's Pet Service</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
+        <li class="active"><a href="PetRegistration.php">Register Pet</a></li>
+        <li><a href="PurchasePetWalking.php">Purchase Service</a></li>
       <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="../logout.php">Log out</a></li>
     </ul>
   </div>
 </nav>

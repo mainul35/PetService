@@ -15,6 +15,7 @@ if (!isset($_SESSION['username'])) {
                     $invalidLogin = FALSE;
                 } else {
                     $invalidLogin = true;
+                    ?><script>alert("Sorry, invalid credentials!")</script><?php
                 }
             }
         }

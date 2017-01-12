@@ -4,7 +4,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once '../navbar.php';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("location: ../login.php");
+} else {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['submit'])) {
+        include_once '../../controller/ImageUploadController.php';
+        include_once '../../config/config.php';
+        $petName = $_POST['petName'];
+        $petAge = $_POST['petAge'];
+        $petType = $_POST['petType'];
+        $fileName = $_FILES["petImage"]["name"];
+        $tempName = $_FILES["petImage"]["tmp_name"];
+        $size = $_FILES["petImage"]["size"];
+        $imageUploadController = new ImageUploadController();
+        $manager = Config::getManager();
+        $manager->selectDB('petservice');
+        $sql = "SELECT `userId` FROM customer WHERE `username` = '" . $_SESSION['username'] . "'";
+        $result = $manager->query($sql);
+        $userId = $manager->fetchArray($result)[0];
+        $sql = "SELECT `petTypeId` FROM `pettype` WHERE `petType` = '".$petType."';";
+        $result = $manager->query($sql);
+        $petTypeId = $manager->fetchArray($result)[0];
+        
+        $sql = "INSERT INTO pet(`petName`, `petTypeId`,`petAge`, `userId`) VALUES('".$petName."', '".$petTypeId."', '".$petAge."', '".$userId."');";
+        $result = $manager->query($sql);
+        $petId = mysqli_insert_id($manager->getConnection());
+        $imageUploadController->uploadImage($manager, $fileName, $tempName, $size, $petId);
+    }
+}
+include_once './navbar.php';
 ?>
 <head>
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
@@ -13,7 +43,7 @@ include_once '../navbar.php';
     <link rel="stylesheet" href="../../css/style.css"/>
 </head>
 <div class="form-div">
-    <form class="w3-container" method="post" action="PetRegister.php" enctype="multipart/form-data">
+    <form class="w3-container" method="post" action="PetRegistration.php" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>
@@ -36,7 +66,18 @@ include_once '../navbar.php';
                     <label for="petType">Pet Type</label>
                 </td>
                 <td>
-                    <input class="w3-input" type="text" name="petType"/>
+                    <select name="petType">
+                    <?php
+                    include_once '../../config/config.php';
+                    $manager = Config::getManager();
+                    $manager->selectDB('petservice');
+                    $sql = "SELECT `pettype`.`petType` FROM `pettype`;";
+                    $result = $manager->query($sql);
+                    while ($arr = $manager->fetchAssociativeArray($result)) {
+                        echo "<option value='" . $arr['petType'] . "'>" . $arr['petType'] . "</option><br>";
+                    }
+                    ?>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -55,3 +96,6 @@ include_once '../navbar.php';
         </table>
     </form>
 </div>
+<?php
+}
+?>
