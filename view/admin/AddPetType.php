@@ -13,7 +13,7 @@ if (isset($_SESSION['username'])) {
     if ($_SESSION['username'] == 'adminlucey') {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['add'])) {
-                print_r($_POST['petTypeName']);
+//                print_r($_POST['petTypeName']);
                 include_once '../../config/config.php';
                 $manager = Config::getManager();
                 $manager->selectDB('petservice');

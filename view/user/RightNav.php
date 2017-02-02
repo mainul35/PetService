@@ -42,8 +42,8 @@
 </style>
 <div class="right-nav">
     <script>
-        var nav = ["Pet Walking", "Pet Feeding", "Pet Socialisation", "Play Session"];
-        var navLink = ["PurchasePetWalking.php", "./PetFeeding.php", "", ""];
+        var nav = ["Pet Walking", "Pet Feeding", "Pet Socialisation", "Play Session", "My Orders"];
+        var navLink = ["PurchasePetWalking.php", "./PurchasePetFeeding.php", "PurchasePetSocialization.php", "PurchasePlaySession.php", "MyOrders.php"];
         var i = 0;
         for (i = 0; i < nav.length; i++) {
             var menu = "<div class='menuItem' id='" + i + "'><a style='display:block; text-style: none;' href='" + navLink[i] + "'>" + nav[i] + "</a></div>";

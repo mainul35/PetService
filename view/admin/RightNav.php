@@ -41,7 +41,7 @@
 </style>
 <script>
     var nav = ["Add pet type", "Add Service","View bookings", "Log out"];
-    var navLink = ["AddPetType.php", "./AddService.php","#", "../logout.php"];
+    var navLink = ["AddPetType.php", "./AddService.php","./OrderedServices.php", "../logout.php"];
     var i = 0;
     for (i = 0; i < nav.length; i++) {
         var menu = "<div class='menuItem' id='" + i + "'><a style='display:block; text-style: none;' href='" + navLink[i] + "'>" + nav[i] + "</a></div>";

@@ -19,7 +19,7 @@ if (!isset($_SESSION['username'])) {
             $sql = "INSERT INTO booking(`dateTime`, `serviceId`, `petId`, `unit`)
                 SELECT '" . $date . "', service.serviceId, pet.petId, '" . $totalUnits . "'
                 FROM service, pet, customer
-                WHERE service.serviceName = 'Pet Walking'
+                WHERE service.serviceName = 'Play Session'
                 AND pet.petName = '" . $petName . "'
                 AND pet.userId = customer.userId
                 AND customer.username = '" . $_SESSION['username'] . "';";
@@ -63,10 +63,10 @@ if (!isset($_SESSION['username'])) {
 
             <table>
                 <thead>
-                <h3 style="text-align: center;">Book for Pet walking</h3>
+                <h3 style="text-align: center;">Book for Play Session</h3>
                 </thead>
                 <tr>
-                    <td colspan="2"><p style="text-align: center;">(15 minutes per unit)</p></td>
+                    <td colspan="2"><p style="text-align: center;">(30 minutes Per Unit @ £3)</p></td>
                 </tr>
                 <tr>
                     <td>

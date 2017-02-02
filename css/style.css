@@ -78,3 +78,22 @@ select{
 nav{
     border-radius: 0px;
 }
+
+.all-uploads{
+    width: 165px;
+    height: 165px;
+    margin-left: 3vh;
+    margin-top: 5vh;
+    border-radius: 4px;
+}
+
+.all-uploads-inf{
+    line-height: -2px;
+    margin-left: 3vh;
+}
+
+.orders-div{
+    width: 1054px;
+    margin-top: -570px;
+    margin-left: 255px;
+}

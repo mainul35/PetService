@@ -14,10 +14,10 @@ if (!isset($_SESSION['username'])) {
             $manager = Config::getManager();
             $manager->selectDB('petservice');
             $petName = $_POST['petName'];
-            $totalUnits = $_POST['totalUnit'];
+//            $totalUnits = $_POST['totalUnit'];
             $date = $_POST['date'];
             $sql = "INSERT INTO booking(`dateTime`, `serviceId`, `petId`, `unit`)
-                SELECT '" . $date . "', service.serviceId, pet.petId, '" . $totalUnits . "'
+                SELECT '" . $date . "', service.serviceId, pet.petId, '1'
                 FROM service, pet, customer
                 WHERE service.serviceName = 'Pet Walking'
                 AND pet.petName = '" . $petName . "'
@@ -59,14 +59,14 @@ if (!isset($_SESSION['username'])) {
         </style>
     </head>
     <div class="form-div">
-        <form class="w3-container" method="post" action="PurchasePetWalking.php">
+        <form class="w3-container" method="post" action="PurchasePetFeeding.php">
 
             <table>
                 <thead>
-                <h3 style="text-align: center;">Book for Pet walking</h3>
+                <h3 style="text-align: center;">Book for Pet feeding</h3>
                 </thead>
                 <tr>
-                    <td colspan="2"><p style="text-align: center;">(15 minutes per unit)</p></td>
+                    <td colspan="2"><p style="text-align: center;">(£3 Per feeding)</p></td>
                 </tr>
                 <tr>
                     <td>
@@ -85,14 +85,6 @@ if (!isset($_SESSION['username'])) {
                             }
                             ?>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="totalUnit">Enter Unit</label>
-                    </td>
-                    <td>
-                        <input class="w3-input" type="number" name="totalUnit"/>
                     </td>
                 </tr>
                 <tr>

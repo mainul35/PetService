@@ -107,6 +107,7 @@ include_once '../view/header.html';
 		serviceId INT(10) NOT NULL,
 		petId INT(10) NOT NULL,
 		totalUnits INT(10) NOT NULL,
+                confirmed INT(1) NOT NULL DEFAULT '0',
 		PRIMARY KEY (bookingId)
 		)";
         $manager->query($sql);
