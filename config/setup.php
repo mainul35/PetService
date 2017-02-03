@@ -106,7 +106,7 @@ include_once '../view/header.html';
 		dateTime DATETIME NOT NULL,
 		serviceId INT(10) NOT NULL,
 		petId INT(10) NOT NULL,
-		totalUnits INT(10) NOT NULL,
+		unit INT(10) NOT NULL,
                 confirmed INT(1) NOT NULL DEFAULT '0',
 		PRIMARY KEY (bookingId)
 		)";
@@ -117,12 +117,14 @@ include_once '../view/header.html';
             echo '\'booking\' table created successfully.<br>';
         }
 
+        $sql = "INSERT INTO `service`(`serviceName`, `costPerUnit`) VALUES ('Pet Walking',1),('Pet Feeding', 3),('Puppy Socialization',8),('Play Session', 3);";
+        $manager->query($sql);
         $sql = "insert into customer values('1','adminlucey','admin@luceypet.com','".md5('Lucey@1234')."','Lucey','admin','Lucy\'s Pet Service Center','','female')";
         $manager->query($sql);
         if (mysqli_error($manager->getConnection())) {
             echo 'Error encountered. ' . mysqli_error($manager->getConnection()) . " at line no. " . mysqli_errno($manager->getConnection()) . "<br>";
         } else {
-            echo 'Welcome, Lucey!<br>Your username address is: adminlucey <br>and password is Lucey@1234<br> Please log in and customize your profile.';
+            echo 'Welcome, Lucey!<br>Your username is: adminlucey <br>and password is Lucey@1234<br> Please log in and customize your profile.';
         }
         ?>
     </div>

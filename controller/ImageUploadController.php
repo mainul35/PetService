@@ -62,7 +62,7 @@ class ImageUploadController {
         $parts = explode('/', $dirName);
         $dir = "";
         for ($i = 0; $i < count($parts); $i++) {
-            echo $parts[$i] . "<br>";
+//            echo $parts[$i] . "<br>";
             $dir .= $parts[$i] . '/';
             if (!is_dir($dir) && strlen($dir) > 0) {
                 mkdir($dir, $rights);

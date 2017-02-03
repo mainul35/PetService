@@ -6,7 +6,7 @@ session_start();
  * and open the template in the editor.
  */
 
-include_once '../header.html';
+include_once './navbar.php';
 include_once './RightNav.php';
 ?>
 <head>
@@ -20,12 +20,12 @@ include_once './RightNav.php';
     <style>
         .orders-div{
             width: 1054px;
-            margin-top: -590px;
+            margin-top: -560px;
             margin-left: 255px;
         }
         
         .right-nav{
-            margin-top: 0px;
+            margin-top: -20px;
         }
     </style>
 </head>
@@ -67,7 +67,7 @@ AND customer.userId = (SELECT customer.userId FROM customer WHERE customer.usern
                     $tr .= "<td>" . $row['serviceName'] . "</td>";
                     $tr .= "<td>" . $row['unit'] . "</td>";
                     $tr .= "<td>" . $row['serviceCost'] . "</td>";
-                    $tr .= "<td><a href='delete.php?id=" . $row['bookingId'] . "'>Confirm</a></td>";
+                    $tr .= "<td><a href='DeleteBooking.php?id=" . $row['bookingId'] . "'>Delete</a></td>";
                     $tr .= "</tr>";
                 }
                 echo $tr;

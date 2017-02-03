@@ -42,7 +42,10 @@ include_once './navbar.php';
     <link rel="stylesheet" href="../../css/w3.css"/>
     <link rel="stylesheet" href="../../css/style.css"/>
 </head>
+<h2>Register your pet</h2>
+<hr>
 <div class="form-div">
+    
     <form class="w3-container" method="post" action="PetRegistration.php" enctype="multipart/form-data">
         <table>
             <tr>

@@ -184,9 +184,6 @@ if (!isset($_SESSION['username'])) {
                         <td>
                             <input class="w3-input" type="text" name="username"/>
                         </td>
-                        <td>
-                            <span id="invalidMail"></span>
-                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -268,10 +265,10 @@ if (!isset($_SESSION['username'])) {
                     </tr>
                     <tr>
                         <td>
-                            <br>Already have an account?<a style="font-size: 12px;" href=""><br>Login</a>
+                            <br>Already have an account?<a style="font-size: 12px;" href="login.php"><br>Login</a>
                         </td>
                         <td>
-                            <input style="margin-left: 20vh;" class="w3-btn w3-white w3-border w3-border-blue w3-round" type="submit" name="submit" value="Sign in"/>
+                            <input style="margin-left: 20vh;" class="w3-btn w3-white w3-border w3-border-blue w3-round" type="submit" name="submit" value="Sign Up"/>
                         </td>
                     </tr>
                 </table>

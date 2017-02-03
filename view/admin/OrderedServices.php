@@ -20,7 +20,7 @@ include_once './RightNav.php';
     <style>
         .orders-div{
             width: 1054px;
-            margin-top: -850px;
+            margin-top: -770px;
             margin-left: 255px;
         }
     </style>

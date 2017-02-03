@@ -19,7 +19,7 @@ if (!isset($_SESSION['username'])) {
             $sql = "INSERT INTO booking(`dateTime`, `serviceId`, `petId`, `unit`)
                 SELECT '" . $date . "', service.serviceId, pet.petId, '1'
                 FROM service, pet, customer
-                WHERE service.serviceName = 'Pet Walking'
+                WHERE service.serviceName = 'Pet Feeding'
                 AND pet.petName = '" . $petName . "'
                 AND pet.userId = customer.userId
                 AND customer.username = '" . $_SESSION['username'] . "';";
